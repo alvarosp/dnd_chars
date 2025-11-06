@@ -78,13 +78,13 @@ async function fetchJSON(url){
 function drawSpellCard(spellId){
     sp = spells_eileen[spellId];
     document.getElementById('spellCardTitle').innerHTML = getSpellTitle(sp);
-    document.getElementById('spellCardBody').innerHTML = `<p class="card-text"><strong>Casting Time:</strong> ${sp.time[0].number} ${sp.time[0].unit}</p>
-        <p class="card-text"><strong>Range:</strong> ${sp.range.distance.amount?sp.range.distance.amount:""} ${sp.range.distance.type}</p>
-        <p class="card-text"><strong>Components:</strong> ${getSpellComponents(sp)}</p>
-        <p class="card-text"><strong>Duration:</strong> ${getDuration(sp)}</p>
+    document.getElementById('spellCardBody').innerHTML = `<p class="card-text mb-0"><strong>Casting Time:</strong> ${sp.time[0].number} ${sp.time[0].unit}</p>
+        <p class="card-text mb-0"><strong>Range:</strong> ${sp.range.distance.amount?sp.range.distance.amount:""} ${sp.range.distance.type}</p>
+        <p class="card-text mb-0"><strong>Components:</strong> ${getSpellComponents(sp)}</p>
+        <p class="card-text mb-2"><strong>Duration:</strong> ${getDuration(sp)}</p>
         ${getEntries(sp)}
         ${getSpellUpgrade(sp)}
-        <p class="card-text"><strong>Source:</strong> ${sp.source}, page ${sp.page}</p>`;
+        <p class="card-text mt-1"><strong>Source:</strong> ${sp.source}, page ${sp.page}</p>`;
 }
 
 function getSpellTitle(sp){
@@ -118,17 +118,19 @@ function getEntries(sp){
     sp.entries.forEach(entry => {
         if (typeof entry === 'object'){
             if (entry.hasOwnProperty('entries')){
-                entries += `<p class="card-text"><strong>${entry.name}.</strong> ${entry.entries[0]}</p>`
+                entries += `<p class="card-text mb-0"><strong>${entry.name}.</strong> ${entry.entries[0]}</p>`
             } else {
                 entry.items.forEach( item => {
-                    entries += `<p class="card-text"><strong>${item.name}.</strong> ${item.entries[0]}</p>`
+                    entries += `<p class="card-text mb-0"><strong>${item.name}.</strong> ${item.entries[0]}</p>`
                 });
             }
             
         } else {
-            entries += `<p class="card-text">${entry}</p>`
+            entries += `<p class="card-text mb-0">${entry}</p>`
         }
     });
+    const regex = /{@\w* ([^|]*)\|[^}]*}/gm;
+    //entries = entries.replace(regex, "$1");
     return entries;
 }
 
