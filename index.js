@@ -2,6 +2,16 @@ let spells;
 let spells_obj = {};
 let spells_eileen_json;
 let spells_eileen = [];
+const schools = {
+    A: {name: "Abjuration", short:"Abj."},
+    C: {name: "Conjuration", short:"Conj."},
+    D: {name: "Divination", short:"Div."},
+    E: {name: "Enchantment", short:"Ench."},
+    I: {name: "Illusion", short:"Ill."},
+    N: {name: "Necromancy", short:"Nec."},
+    T: {name: "Transmutation", short:"Tr."},
+    V: {name: "Evocation", short:"Ev."},
+}
 
 async function init(){
     spellsTableTbody = document.getElementById("spellsListTableTbody");
@@ -10,14 +20,22 @@ async function init(){
         spells_eileen_json = (await fetchJSON('./eileen_spells.json'))["items"];
     } catch (e){
         console.error(e);
+        return;
     }
     spells.forEach(spell => {
         spells_obj[spell.name.toLowerCase()] = spell;
     });
     spells_eileen_json.forEach(spell => {
         spell_name = decodeURI(spell['h'].split('_')[0]);
-        spell = spells_obj[spell_name];
-        spells_eileen.push(spell);
+        spells_eileen.push(spells_obj[spell_name]);
+    });
+    spells_eileen.sort((a,b) => {
+        if (a.level === b.level)
+            return (a.name).localeCompare(b.name);
+        else
+            return a.level - b.level;
+    });
+    spells_eileen.forEach(spell => {
         let tr = document.createElement('tr');
         let tdName = document.createElement('td');
         tdName.textContent = spell.name;
@@ -26,7 +44,7 @@ async function init(){
         let tdTime = document.createElement('td');
         tdTime.textContent = `${spell.time[0].number} ${spell.time[0].unit}` ;
         let tdSchool = document.createElement('td');
-        tdSchool.textContent = spell.school;
+        tdSchool.textContent = schools[spell.school].short;
         let tdConcentration = document.createElement('td');
         tdConcentration.textContent = spell.duration[0].concentration?"X":"";
         let tdRange = document.createElement('td');
@@ -59,7 +77,7 @@ async function fetchJSON(url){
 
 function drawSpellCard(spellId){
     sp = spells_eileen[spellId];
-    document.getElementById('spellCardTitle').innerHTML = `${sp.name} <small class="text-body-secondary">${sp.level} ${sp.school}</small>`;
+    document.getElementById('spellCardTitle').innerHTML = getSpellTitle(sp);
     document.getElementById('spellCardBody').innerHTML = `<p class="card-text"><strong>Casting Time:</strong> ${sp.time[0].number} ${sp.time[0].unit}</p>
         <p class="card-text"><strong>Range:</strong> ${sp.range.distance.amount?sp.range.distance.amount:""} ${sp.range.distance.type}</p>
         <p class="card-text"><strong>Components:</strong> ${getSpellComponents(sp)}</p>
@@ -67,6 +85,10 @@ function drawSpellCard(spellId){
         ${getEntries(sp)}
         ${getSpellUpgrade(sp)}
         <p class="card-text"><strong>Source:</strong> ${sp.source}, page ${sp.page}</p>`;
+}
+
+function getSpellTitle(sp){
+    return `${sp.name} <small class="text-body-secondary">(Level ${sp.level} ${schools[sp.school].name})</small>`
 }
 
 function getSpellComponents(sp){

@@ -4,90 +4,34 @@
 	"name": "Eileen_spells",
 	"saveId": "4e47da17-7298-41d8-a584-71f19271d33b",
 	"items": [
-		{
-			"h": "find%20familiar_xphb"
-		},
-		{
-			"h": "fog%20cloud_xphb"
-		},
-		{
-			"h": "mage%20armor_xphb"
-		},
-		{
-			"h": "shield_xphb"
-		},
-		{
-			"h": "sleep_xphb"
-		},
-		{
-			"h": "detect%20magic_xphb"
-		},
-		{
-			"h": "comprehend%20languages_xphb"
-		},
-		{
-			"h": "tenser's%20floating%20disk_xphb"
-		},
-		{
-			"h": "unseen%20servant_xphb"
-		},
-		{
-			"h": "alarm_xphb"
-		},
-		{
-			"h": "identify_xphb"
-		},
-		{
-			"h": "expeditious%20retreat_xphb"
-		},
-		{
-			"h": "invisibility_xphb"
-		},
-		{
-			"h": "web_xphb"
-		},
-		{
-			"h": "mirror%20image_xphb"
-		},
-		{
-			"h": "misty%20step_xphb"
-		},
-		{
-			"h": "flaming%20sphere_xphb"
-		},
-		{
-			"h": "levitate_xphb"
-		},
-		{
-			"h": "scorching%20ray_xphb"
-		},
-		{
-			"h": "hypnotic%20pattern_xphb"
-		},
-		{
-			"h": "leomund's%20tiny%20hut_xphb"
-		},
-		{
-			"h": "counterspell_xphb"
-		},
-		{
-			"h": "dispel%20magic_xphb"
-		},
-		{
-			"h": "fireball_xphb"
-		},
-		{
-			"h": "phantom%20steed_xphb"
-		},
-		{
-			"h": "clairvoyance_xphb"
-		},
-		{
-			"h": "fire%20shield_xphb"
-		},
-		{
-			"h": "polymorph_xphb"
-		}
+		{"h": "find%20familiar_xphb"},
+		{"h": "fog%20cloud_xphb"},
+		{"h": "mage%20armor_xphb"},
+		{"h": "shield_xphb"},
+		{"h": "sleep_xphb"},
+		{"h": "detect%20magic_xphb"},
+		{"h": "comprehend%20languages_xphb"},
+		{"h": "tenser's%20floating%20disk_xphb"},
+		{"h": "unseen%20servant_xphb"},
+		{"h": "alarm_xphb"},
+		{"h": "identify_xphb"},
+		{"h": "expeditious%20retreat_xphb"},
+		{"h": "invisibility_xphb"},
+		{"h": "web_xphb"},
+		{"h": "mirror%20image_xphb"},
+		{"h": "misty%20step_xphb"},
+		{"h": "flaming%20sphere_xphb"},
+		{"h": "levitate_xphb"},
+		{"h": "scorching%20ray_xphb"},
+		{"h": "hypnotic%20pattern_xphb"},
+		{"h": "leomund's%20tiny%20hut_xphb"},
+		{"h": "counterspell_xphb"},
+		{"h": "dispel%20magic_xphb"},
+		{"h": "fireball_xphb"},
+		{"h": "phantom%20steed_xphb"},
+		{"h": "clairvoyance_xphb"},
+		{"h": "fire%20shield_xphb"},
+		{"h": "polymorph_xphb"}
 	],
 	"sources": [
 		"XPHB"
