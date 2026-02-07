@@ -16,6 +16,9 @@
 		{"h": "alarm_xphb"},
 		{"h": "identify_xphb"},
 		{"h": "expeditious%20retreat_xphb"},
+		{"h": "speak%20with%20animals_xphb"},
+		{"h": "disguise%20self_xphb"},
+
 		{"h": "invisibility_xphb"},
 		{"h": "web_xphb"},
 		{"h": "mirror%20image_xphb"},
@@ -23,6 +26,9 @@
 		{"h": "flaming%20sphere_xphb"},
 		{"h": "levitate_xphb"},
 		{"h": "scorching%20ray_xphb"},
+		{"h": "augury_xphb"},
+		{"h": "locate%20object_xphb"},
+
 		{"h": "hypnotic%20pattern_xphb"},
 		{"h": "leomund's%20tiny%20hut_xphb"},
 		{"h": "counterspell_xphb"},
@@ -30,8 +36,21 @@
 		{"h": "fireball_xphb"},
 		{"h": "phantom%20steed_xphb"},
 		{"h": "clairvoyance_xphb"},
+		{"h": "sending_xphb"},
+		{"h": "protection%20from%20energy_xphb"},
+		{"h": "fly_xphb"},
+
+		{"h": "arcane%20eye_xphb"},
+		{"h": "fabricate_xphb"},
+		{"h": "divination_xphb"},
+		{"h": "mordenkainen's%20faithful%20hound_xphb"},
 		{"h": "fire%20shield_xphb"},
-		{"h": "polymorph_xphb"}
+		{"h": "polymorph_xphb"},
+
+		{"h": "teleportation%20circle_xphb"},
+		{"h": "wall%20of%20stone_xphb"},
+		{"h": "scrying_xphb"},
+		{"h": "conjure%20elemental_xphb"}
 	],
 	"sources": [
 		"XPHB"
