@@ -37,6 +37,8 @@ async function init(){
     });
     spells_eileen.forEach(spell => {
         let tr = document.createElement('tr');
+        let tdCheckM = document.createElement('td');
+        tdCheckM.innerHTML= '<input type="checkbox">';
         let tdName = document.createElement('td');
         tdName.textContent = spell.name;
         let tdLevel = document.createElement('td');
@@ -49,6 +51,7 @@ async function init(){
         tdConcentration.textContent = spell.duration[0].concentration?"X":"";
         let tdRange = document.createElement('td');
         tdRange.textContent = `${spell.range.distance.amount?spell.range.distance.amount:""} ${spell.range.distance.type}`;
+        tr.appendChild(tdCheckM);
         tr.appendChild(tdName);
         tr.appendChild(tdLevel);
         tr.appendChild(tdTime);
