@@ -87,7 +87,8 @@ function drawSpellCard(spellId){
         <p class="card-text mb-2"><strong>Duration:</strong> ${getDuration(sp)}</p>
         ${getEntries(sp)}
         ${getSpellUpgrade(sp)}
-        <p class="card-text mt-1"><strong>Source:</strong> ${sp.source}, page ${sp.page}</p>`;
+        <p class="card-text mt-1"><strong>Source:</strong> ${sp.source}, page ${sp.page}</p>
+        <p class="card-text mt-1"><a href="https://5e.tools/spells.html#${sp.name.toLowerCase()}_${sp.source.toLowerCase()}">5etools</a></p>`;
 }
 
 function getSpellTitle(sp){
@@ -117,24 +118,50 @@ function getDuration(sp){
 }
 
 function getEntries(sp){
-    let entries = "";
+    console.log(sp);
+    let elementHTML = "";
     sp.entries.forEach(entry => {
         if (typeof entry === 'object'){
             if (entry.hasOwnProperty('entries')){
-                entries += `<p class="card-text mb-0"><strong>${entry.name}.</strong> ${entry.entries[0]}</p>`
-            } else {
+                elementHTML += `<p class="card-text mb-0"><strong>${entry.name}.</strong> ${entry.entries[0]}</p>`
+            } else if (entry.type === 'list'){
+                elementHTML += '<ul>';
                 entry.items.forEach( item => {
-                    entries += `<p class="card-text mb-0"><strong>${item.name}.</strong> ${item.entries[0]}</p>`
+                    elementHTML += `<li><p class="card-text mb-0"><strong>${item.name}.</strong> ${item.entries[0]}</p></li>`
                 });
+                elementHTML += '</ul>';
+            } else if (entry.type === 'table'){
+                elementHTML += getTable(entry);
+            } else {
+                console.error("¡Entry type not recognized!");
+                console.log(entry);
             }
-            
         } else {
-            entries += `<p class="card-text mb-0">${entry}</p>`
+            elementHTML += `<p class="card-text mb-0">${entry}</p>`
         }
     });
     const regex = /{@\w* ([^|]*)\|[^}]*}/gm;
-    //entries = entries.replace(regex, "$1");
-    return entries;
+    //elementHTML = entries.replace(regex, "$1");
+    return elementHTML;
+}
+
+function getTable(entry){
+    elementHTML = '<table class="table">';
+    if (entry.hasOwnProperty('colLabels')){
+        elementHTML += '<tr>';
+        entry.colLabels.forEach( item => {
+            elementHTML += `<th>${item}</th>`;
+        });
+    }
+    entry.rows.forEach( row => {
+        elementHTML += '<tr>';
+        row.forEach( item => {
+            elementHTML += `<td>${item}</td>`;
+        });
+        elementHTML += '</tr>';
+    });
+    elementHTML += '</table>';
+    return elementHTML;
 }
 
 function getSpellUpgrade(sp){
